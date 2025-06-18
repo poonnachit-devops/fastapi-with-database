@@ -40,9 +40,8 @@ services:
 
     # For development purposes, you can use the following configuration
     # docker compose up --watch
-    
-    # develop:
-    #   watch:
-    #     - action: rebuild
-    #       path: .
-    #       target: /app
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+          target: /app
