@@ -40,5 +40,10 @@ services:
     develop:
       watch:
         - action: rebuild
-          path: /app
+          path: ./app
           target: /usr/src/app
+
+  frontend_app:
+    image: poonnachitdevops/workshop007-frontend:1.0
+    ports:
+      - 3000:80
