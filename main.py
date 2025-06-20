@@ -46,15 +46,15 @@ def get_session():
 SessionDep = Annotated[Session, Depends(get_session)]
 
 
-app = FastAPI()
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_db_and_tables()
     yield
     # Cleanup if needed
     print("Shutting down application...")
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 @app.post("/items/", response_model=Item, tags=["items"])
