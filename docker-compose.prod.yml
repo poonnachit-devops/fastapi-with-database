@@ -2,8 +2,6 @@ services:
   mysql:
     image: mysql:9.3.0
     restart: always
-    ports:
-      - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: items
@@ -24,9 +22,7 @@ services:
       - mysql
 
   fastapi_app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: <username>/<image_name>
     restart: always
     ports:
       - 8000:8000
@@ -37,11 +33,3 @@ services:
       DATABASE_NAME: items
     depends_on:
       - mysql
-
-    # For development purposes, you can use the following configuration
-    # docker compose up --watch
-    develop:
-      watch:
-        - action: rebuild
-          path: .
-          target: /app

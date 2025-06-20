@@ -1,16 +1,16 @@
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY pyproject.toml /app/
-COPY uv.lock /app/
+COPY pyproject.toml .
+COPY uv.lock .
 
 # Install the application dependencies.
 RUN uv sync --frozen --no-cache
 
 # Copy the application into the container.
-COPY . /app
+COPY /app .
 
-ENV PATH="/app/.venv/bin:$PATH"
+ENV PATH="/usr/src/app/.venv/bin:$PATH"
 # Run the application.
 CMD ["fastapi", "run", "main.py"]
