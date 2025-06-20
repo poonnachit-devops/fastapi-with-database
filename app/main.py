@@ -31,7 +31,7 @@ app.add_middleware(
 
 @app.get("/", tags=["root"])
 def read_root():
-    return {"message": "Welcome to the FastAPI application with MySQL!"}
+    return {"message": "Version 2"}
 
 
 app.include_router(items_router)
