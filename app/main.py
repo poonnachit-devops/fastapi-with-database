@@ -31,7 +31,7 @@ app.add_middleware(
 
 @app.get("/", tags=["root"])
 def read_root():
-    return {"message": "Version 2"}
+    return {"message": "Version 7"}
 
 
 app.include_router(items_router)
